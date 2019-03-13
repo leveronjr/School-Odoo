@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	 <data>
+	 	<record id="view_school_tree" model="ir.ui.view">
+	 		<field name="name">school.schol.tree</field>
+	 		<field name="name">school.schol</field>
+            <field name="priority" eval="8"/>
+            <field name="priority" type="xml"/>
+                <tree string="Alumno">
+                    <field name="nombre_completo"/>
+                    <field name="edad"/>
+                    <field name="sexo"/>
+                    <field name="encargado"/>
+                    <field name="fecha_matricula"/>
+                </tree>
+	    </record>
+        <record id="view_school_tree" model="ir.ui.view">
+            <field name="name">school.schol.form</field>
+            <field name="name">school.schol</field>
+            <field name="priority" eval="8"/>
+            <field name="priority" type="xml"/>
+                <form string="Alumno">
+                    <sheet>
+                        <field name="photo" widget="image" class="oe_left oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="informacion_alumno" string="Información del alumno">
+                                <group col="4" colspan="4" name="alumno_detalles">
+                                    <field name="nombre_completo"/>
+                                    <field name="edad"/>
+                                    <field name="sexo"/>
+                                    <field name="encargado"/>
+                                    <field name="fecha_matricula"/>
+                                </group>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+        </record>  
+            <record model="ir.actions.act_window" Id="action_view_alumno">
+                    <field name="name">Alumnos</field>
+                    <field name="res_model">school.school</field>
+                    <field name="view_type">form</field>
+                    <field name="view_model">tree,form</field>
+                    <field name="domain">[]</field>
+                    <field name="help" type="html"><p class="oe_view_nocontent_create">Añadir Alumno</p>
+                    </field>
+            </record> 
+
+            <menuitem id="menu_alumno" name="Alumnos"/>
+            <menuitem id="flota" name="Flota" parent="menu_alumno" action="action_view_alumno"/>
+
+     </data>
+</odoo>
