@@ -3,9 +3,9 @@
 	 <data>
 	 	<record id="view_school_tree" model="ir.ui.view">
 	 		<field name="name">school.schol.tree</field>
-	 		<field name="name">school.schol</field>
+	 		<field name="model">school.schol</field>
             <field name="priority" eval="8"/>
-            <field name="priority" type="xml"/>
+            <field name="arch" type="xml"/>
                 <tree string="Alumno">
                     <field name="nombre_completo"/>
                     <field name="edad"/>
@@ -16,21 +16,26 @@
 	    </record>
         <record id="view_school_tree" model="ir.ui.view">
             <field name="name">school.schol.form</field>
-            <field name="name">school.schol</field>
+            <field name="model">school.schol</field>
             <field name="priority" eval="8"/>
-            <field name="priority" type="xml"/>
+            <field name="arch" type="xml"/>
                 <form string="Alumno">
                     <sheet>
                         <field name="photo" widget="image" class="oe_left oe_avatar"/>
-                        <div class="oe_title">
+                       <div class="oe_title">
                             <h1>
-                                
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <field name="nombre_completo" requiered="1" placeholder="Nombre Alumno" />                                  
+                                        </td>
+                                    </tr>
+                                </table>
                             </h1>
-                        </div>
+                        </div>-->
                         <notebook colspan="4">
                             <page name="informacion_alumno" string="Información del alumno">
                                 <group col="4" colspan="4" name="alumno_detalles">
-                                    <field name="nombre_completo"/>
                                     <field name="edad"/>
                                     <field name="sexo"/>
                                     <field name="encargado"/>
@@ -44,7 +49,7 @@
         </record>  
             <record model="ir.actions.act_window" Id="action_view_alumno">
                     <field name="name">Alumnos</field>
-                    <field name="res_model">school.school</field>
+                    <field name="res_model">school.schol</field>
                     <field name="view_type">form</field>
                     <field name="view_model">tree,form</field>
                     <field name="domain">[]</field>
