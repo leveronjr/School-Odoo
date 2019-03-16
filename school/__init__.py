@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-import school
+from . import school

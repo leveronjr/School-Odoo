@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, fields
+from odoo import api, exceptions, fields, models, _
 
-class School (models.Model):
-	_name = 'alumno.alumn'
-	nombreAlumno = fields.Char(string='nombre_completo',requiered=True)
-	edad = fields.Integer(string="edad",requiered=True)
-	sexo = fields.Char(string="sexo",requiered=True)
-	encargado = fields.Char(string="encargado")
-	fecha_matricula = fields.Date(string='fecha_matricula')
-	photo = field.Binary(string="Photo")
+class School(models.Model):
+
+    _name = 'alumno.school'
+
+
+    name = fields.Char(string='Nombre', required=True)
+    identidad = fields.Char(string='Identidad')
+
+    genero = fields.Selection(string='Género', 
+        selection=[('m', 'Másculino'), ('f', 'Feménino'),])
+    
+    date_birth = fields.Date(string='Fecha de Nacimiento')
+
+
+    
+class SaleOrder(models.Model):
+    _inherit = ['sale.order']
+
+   alumno_id = fields.Many2one(comodel_name='alumno.school', string='Alumno')
